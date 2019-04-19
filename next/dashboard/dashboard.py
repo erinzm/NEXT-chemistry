@@ -72,7 +72,8 @@ def experiment_list():
                                               key=lambda e: e['start_date'],
                                               reverse=True))
 
-@dashboard.route('/get_stats', methods=['POST'])
+@dashboard.route('/get_stats', methods=['POST', 'OPTIONS'])
+@utils.crossdomain(origin='*')
 def get_stats():
     args_dict = request.json
     exp_uid = args_dict['exp_uid']
